@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рукоделов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <nav class="nav">
+                    <div class="header__link city">
+                        <div class="city__img img-abs"></div>
+                        Санкт-Петербург
+                    </div>
+                    <a class="header__link" href="https://www.rukodelov.ru/delivery/">Доставка и оплата</a>
+                    <a class="header__link" href="https://www.rukodelov.ru/info/rassrochka/">Кредит и рассрочка</a>
+                </nav>
+                <div class="header__link phone">
+                    <div class="phone__img img-abs"></div>
+                    8 800 500 78 91
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <header class="header-fixed-1">
+        <div class="container">
+            <div class="header-fixed__inner">
+                <div class="header__logo"></div>
+                <div class="catalog">
+                    <div class="catalog__img"></div>
+                    Каталог
+                </div>
+                <div class="search-block">
+                    <input class="search-input" placeholder="Поиск по 100500 товаров" type="text">
+                    <div class="search-btn"></div>
+                    <div class="search-img"></div>
+                </div>
+                <div class="cell">
+                    <div class="favourits">
+                        <div class="favourits-img"></div>
+                    </div>
+                    <div class="cell-title">Избранное</div>
+                    <div class="favourits-cursor-img"></div>
+                </div>
+                <div class="cell">
+                    <div class="auth-img"></div>
+                    <div class="cell-title">Войти</div>
+                </div>
+                <div class="cell">
+                    <div class="basket-img"></div>
+                    <div class="cell-title">Корзина</div>
+                    <div class="count-of-product">10</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="slider-hint"></div>
+
+    <div class="intro">
+        <div class="container">
+            <div class="intro__inner">
+                <div class="main-slider">
+                    <div class="desc-imgs">
+                        <div class="description">
+                            <div class="description__title">Уроки резьбы по дереву на нашем канале</div>
+                            <div class="description__subtittle">
+                                Подписывайте, смотрите уроки, получайте промо-коды и используйте их при покупке в нашем
+                                магазине
+                            </div>
+                            <div class="description__more">Подробнее</div>
+                            <div class="description__btn">Перейти на канал
+                                <div class="description__arrow"></div>
+                            </div>
+                            <div class="description__arrow"></div>
+                        </div>
+                        <div class="imgs">
+                            <div class="btn-next"></div>
+                        </div>
+                    </div>
+                    <div class="additional-slider">
+                        <div class="arrow">
+                            <div class="arrow-img"></div>
+                        </div>
+
+                        <div class="offer" v-for="item in arrOffers">
+                            <img class="offer-img" :src="`assets/images/${item.img}.png`" alt="`${item.img}`"></img>
+                            <div class="offer-text" v-text="item.text"></div>
+                        </div>
+
+                        <div class="arrow">
+                            <div class="arrow-img right"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-of-day">
+                    <div class="product-of-day__flex">
+                        <div class="product-of-day__sale">sale</div>
+                        <div class="product-of-day__star">
+                            <img src="assets/images/star.svg" alt="оценка" width="20" height="20">
+                            mark
+                        </div>
+                        <div class="product-of-day__sale">Товар дня</div>
+                    </div>
+                    <img class="product-of-day__img" src="assets/images/school.png" alt="img">
+                    <div class="product-of-day__text">product</div>
+                    <div class="product-of-day__about">about</div>
+                    <div class="product-of-day__price">2700</div>
+                    <div class="product-of-day__old-price">oldPrice</div>
+                    <div class="product-of-day__flex">
+                        <div class="product-of-day__luck"></div>
+                        <div class="product-of-day__like"></div>
+                    </div>
+                    <div class="product-of-day__flex">
+                        <div class="product-of-day__add-btn"></div>
+                        <div class="product-of-day__slider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="app.js"></script>
+
+</html>
