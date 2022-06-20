@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,18 +45,21 @@
                     <div class="search-img"></div>
                 </div>
                 <div class="cell">
-                    <div class="favourits">
+                    <div class="cell-area">
                         <div class="favourits-img"></div>
                     </div>
                     <div class="cell-title">Избранное</div>
-                    <div class="favourits-cursor-img"></div>
                 </div>
                 <div class="cell">
-                    <div class="auth-img"></div>
+                    <div class="cell-area">
+                        <div class="auth-img"></div>
+                    </div>
                     <div class="cell-title">Войти</div>
                 </div>
                 <div class="cell">
-                    <div class="basket-img"></div>
+                    <div class="cell-area">
+                        <div class="basket-img"></div>
+                    </div>
                     <div class="cell-title">Корзина</div>
                     <div class="count-of-product">10</div>
                 </div>
@@ -63,7 +67,33 @@
         </div>
     </header>
 
-    <div class="slider-hint"></div>
+    <div class="footer-slider">
+        <div class="container">
+            <div class="swiper slider-hint">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide fill">Акции</div>
+                    <div class="swiper-slide fill">Новинки</div>
+                    <div class="swiper-slide fill">Бренды</div>
+                    <div class="swiper-slide empty">Наборы для вышивания</div>
+                    <div class="swiper-slide empty">Алмазная вышивка</div>
+                    <div class="swiper-slide empty">Рисование</div>
+                    <div class="swiper-slide empty">Детское творчество</div>
+                    <div class="swiper-slide empty">Эпоксидная смола</div>
+                    <div class="swiper-slide empty">Скрапбукинг</div>
+                    <div class="swiper-slide empty">Алмазная вышивка</div>
+                    <div class="swiper-slide empty">Рисование</div>
+                    <div class="swiper-slide empty">Детское творчество</div>
+                    <div class="swiper-slide empty">Эпоксидная смола</div>
+                    <div class="swiper-slide empty">Скрапбукинг</div>
+                </div>
+
+                <div class="hint swiper-button-prev"></div>
+                <div class="hint swiper-button-next"></div>
+
+            </div>
+        </div>
+
+    </div>
 
     <div class="intro">
         <div class="container">
@@ -80,56 +110,98 @@
                             <div class="description__btn">Перейти на канал
                                 <div class="description__arrow"></div>
                             </div>
-                            <div class="description__arrow"></div>
                         </div>
                         <div class="imgs">
                             <div class="btn-next"></div>
                         </div>
                     </div>
-                    <div class="additional-slider">
-                        <div class="arrow">
-                            <div class="arrow-img"></div>
+                    <div class="swiper additional-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="item in arrOffers" :key="item.img">
+                                <img class="offer-img" :src="`assets/images/${item.img}.png`" alt="`${item.img}`"></img>
+                                <div class="offer-text" v-text="item.text"></div>
+                            </div>
                         </div>
 
-                        <div class="offer" v-for="item in arrOffers">
-                            <img class="offer-img" :src="`assets/images/${item.img}.png`" alt="`${item.img}`"></img>
-                            <div class="offer-text" v-text="item.text"></div>
-                        </div>
+                        <div class="add swiper-button-prev"></div>
+                        <div class="add swiper-button-next"></div>
 
-                        <div class="arrow">
-                            <div class="arrow-img right"></div>
-                        </div>
                     </div>
                 </div>
-                <div class="product-of-day">
-                    <div class="product-of-day__flex">
-                        <div class="product-of-day__sale">sale</div>
-                        <div class="product-of-day__star">
-                            <img src="assets/images/star.svg" alt="оценка" width="20" height="20">
-                            mark
+
+                <div class="swiper product-of-day ">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="(item, i) in arrProductsOfDay" :key="i">
+                            <div class="product-of-day__flex">
+                                <div class="product-of-day__sale">{{item.sale}}
+                                    <div class="product-of-day__sale abs-label">Товар дня</div>
+                                </div>
+                                <div class="product-of-day__star">
+                                    <img src="assets/images/star.svg" alt="оценка" width="20" height="20"
+                                        style="margin-right: 7px">
+                                    {{item.mark}}
+                                </div>
+                            </div>
+                            <img class="product-of-day__img" :src="`assets/images/${item.img}.png`"
+                                alt="`${item.img}`"></img>
+                            <div class="product-of-day__text">{{item.product}}</div>
+                            <div class="product-of-day__about">{{item.about}}</div>
+                            <div class="product-of-day__price">{{item.price}}</div>
+                            <div class="product-of-day__old-price">{{item.oldPrice}}</div>
+                            <div class="product-of-day__flex">
+                                <div class="product-of-day__luck">
+                                    <div class="product-of-day__luck-img">
+                                    </div>
+                                    Мне повезет
+                                </div>
+                                <div class="product-of-day__like"></div>
+                            </div>
+                            <div class="product-of-day__flex">
+                                <div class="product-of-day__add-btn">
+                                    <div class="basket__img"></div>
+                                    В корзину
+                                </div>
+                                <div class="product-of-day__slider">{{i+1}} из {{arrProductsOfDay.length}}</div>
+                            </div>
                         </div>
-                        <div class="product-of-day__sale">Товар дня</div>
                     </div>
-                    <img class="product-of-day__img" src="assets/images/school.png" alt="img">
-                    <div class="product-of-day__text">product</div>
-                    <div class="product-of-day__about">about</div>
-                    <div class="product-of-day__price">2700</div>
-                    <div class="product-of-day__old-price">oldPrice</div>
-                    <div class="product-of-day__flex">
-                        <div class="product-of-day__luck"></div>
-                        <div class="product-of-day__like"></div>
-                    </div>
-                    <div class="product-of-day__flex">
-                        <div class="product-of-day__add-btn"></div>
-                        <div class="product-of-day__slider"></div>
-                    </div>
+                    <div class="product swiper-button-prev"></div>
+                    <div class="product swiper-button-next"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="footer-label">
+                    <div class="credit__img img-abs"></div>
+                    Кредит и рассрочка
+                </div>
+                <div class="footer-label">
+                    <div class="sale__img img-abs"></div>
+                    Система скидок
+                </div>
+                <div class="footer-label">
+                    <div class="tg__img img-abs"></div>
+                    Специальные E-MAIL рассылки
+                </div>
+                <div class="footer-label">
+                    <div class="gift__img img-abs"></div>
+                    Подарок к любому заказу
+                </div>
+                <div class="footer-label">
+                    <div class="plane__img img-abs"></div>
+                    Быстрая доставка
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="app.js"></script>
 
 </html>

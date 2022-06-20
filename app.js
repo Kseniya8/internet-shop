@@ -26,6 +26,14 @@ let app = new Vue({
                 img: 'girls',
                 text: 'Акция к Пасхе'
             },
+            {
+                img: 'sale',
+                text: '25% на весь раздел'
+            },
+            {
+                img: 'box',
+                text: 'Доставим за 1 день'
+            },
         ],
         arrProductsOfDay: [
             {
@@ -48,7 +56,7 @@ let app = new Vue({
             },
             {
                 sale: '25%',
-                mark: 5,
+                mark: 4,
                 img: 'egg',
                 product: 'Набор Трафареты Формы Фигурные 72г',
                 about: 'Ура пасха, красим яйца',
@@ -57,5 +65,35 @@ let app = new Vue({
             }
 
         ]
+    },
+    mounted() {
+        const swiperHint = new Swiper('.slider-hint', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            spaceBetween: 18,
+            slidesPerView: 9,
+
+        });
+
+        const swiper = new Swiper('.product-of-day', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            spaceBetween: 45,
+
+        });
+
+        const swiperAdd = new Swiper('.additional-slider', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            spaceBetween: 17,
+            slidesPerView: 6,
+
+        });
     }
 })
