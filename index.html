@@ -117,7 +117,7 @@
                     </div>
                     <div class="swiper additional-slider">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="item in arrOffers" :key="item.img">
+                            <div class="swiper-slide" v-for="(item, i) in arrOffers" :key="item.img + i">
                                 <img class="offer-img" :src="`assets/images/${item.img}.png`" alt="`${item.img}`"></img>
                                 <div class="offer-text" v-text="item.text"></div>
                             </div>
