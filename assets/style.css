@@ -174,10 +174,14 @@ a {
 
 .search-block {
     position: relative;
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    max-width: 790px;
 }
 
 .search-input {
-    width: 790px;
+    width: 100%;
     height: 61px;
     background: #FFFFFF;
     border: 1px solid #F5CEBB;
@@ -302,18 +306,23 @@ a {
 
 /* Intro */
 .intro,
-.footer-slider {
+.header-slider {
     width: 100%;
+}
+
+.header-slider__inner {
+    position: relative;
 }
 
 .intro__inner {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 35px;
     min-width: 0;
 }
 
 .main-slider {
+    position: relative;
     width: 1049px;
 }
 
@@ -424,6 +433,7 @@ a {
 
 .additional-slider {
     margin-top: 26px;
+    position: static;
 }
 
 .offer-img {
@@ -601,7 +611,13 @@ a {
 }
 
 /* Slider hints */
+.slider-hint {
+    position: static;
+}
+
 .fill {
+    max-width: 200px;
+    text-align: center;
     background: #FFF8E6;
     border-radius: 12px;
     padding: 12px 45px;
@@ -610,6 +626,10 @@ a {
     font-size: 16px;
     line-height: 14px;
     color: #803614;
+}
+
+.fill:nth-child(3) {
+    margin-right: 63px !important;
 }
 
 .empty {
@@ -623,22 +643,17 @@ a {
 }
 
 .hint.swiper-button-prev {
-    left: -44px;
+    left: -40px;
 }
 
 .hint.swiper-button-next {
-    right: -44px;
+    right: -40px;
 }
 
 .hint.swiper-button-prev::after,
 .hint.swiper-button-next::after {
     font-size: 12px;
     color: #B54A22;
-}
-
-.hint.swiper-button-prev::after,
-.hint.swiper-button-next::after {
-    position: fixed;
 }
 
 /* Swipers in intro */
@@ -670,18 +685,25 @@ a {
     color: #DCA287;
 }
 
+.add.swiper-button-prev,
+.add.swiper-button-next {
+    bottom: 50px;
+    top: unset;
+    width: unset;
+    height: unset;
+}
+
 .add.swiper-button-prev {
-    left: -43px;
+    left: 0;
 }
 
 .add.swiper-button-next {
-    right: -43px;
+    right: 0;
 }
 
 
 .add.swiper-button-prev::after,
 .add.swiper-button-next::after {
-    position: fixed;
     text-align: center;
     font-size: 10px;
     padding-top: 11px;
@@ -693,7 +715,7 @@ a {
     box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.11);
 }
 
-/* Intro */
+/* Footer */
 .footer {
     width: 100%;
     margin-top: 55px;
@@ -740,4 +762,30 @@ a {
 
 .plane__img {
     background: url(../assets/images/plane.svg) center / contain no-repeat;
+}
+
+
+@media screen and (max-device-width: 1550px) {
+    .header__inner {
+        height: 52px;
+    }
+
+    .header-fixed__inner {
+        margin: 24px 0 34px 0;
+    }
+
+    .header__logo {
+        min-width: 75px;
+        height: 62px;
+        margin-right: 30px;
+    }
+
+    .catalog {
+        margin-right: 30px;
+    }
+
+    .cell {
+        margin-left: 30px;
+    }
+
 }

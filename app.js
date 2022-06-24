@@ -66,34 +66,54 @@ let app = new Vue({
 
         ]
     },
+    methods: {
+        initSwipers() {
+            const swiperHint = new Swiper('.slider-hint', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                spaceBetween: 18,
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    1025: {
+                        slidesPerView: 6,
+                    },
+                    1551: {
+                        slidesPerView: 9,
+                    },
+                }
+            });
+
+            const swiper = new Swiper('.product-of-day', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                spaceBetween: 45,
+
+            });
+
+            const swiperAdd = new Swiper('.additional-slider', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                spaceBetween: 17,
+                slidesPerView: 6,
+
+            });
+        }
+    },
     mounted() {
-        const swiperHint = new Swiper('.slider-hint', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            spaceBetween: 18,
-            slidesPerView: 9,
-
-        });
-
-        const swiper = new Swiper('.product-of-day', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            spaceBetween: 45,
-
-        });
-
-        const swiperAdd = new Swiper('.additional-slider', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            spaceBetween: 17,
-            slidesPerView: 6,
-
-        });
+        this.initSwipers();
     }
-})
+});
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    window.onresize = function () {
+        app.initSwipers();
+    };
+});
