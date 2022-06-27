@@ -99,25 +99,52 @@
         <div class="container">
             <div class="intro__inner">
                 <div class="main-slider">
-                    <div class="desc-imgs">
-                        <div class="description">
-                            <div class="description__title">Уроки резьбы по дереву на нашем канале</div>
-                            <div class="description__subtittle">
-                                Подписывайте, смотрите уроки, получайте промо-коды и используйте их при покупке в нашем
-                                магазине
+                    <div class="swiper main">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide desc-imgs">
+                                <div class="description-1">
+                                    <div class="description__title">Уроки резьбы по дереву на нашем канале</div>
+                                    <div class="description__subtittle">
+                                        Подписывайтесь, смотрите уроки, получайте промо-коды и используйте их при
+                                        покупке в нашем магазине
+                                    </div>
+                                    <div class="description__more">Подробнее</div>
+                                    <div class="description__btn">Перейти на канал
+                                        <div class="description__arrow"></div>
+                                    </div>
+                                </div>
+
+                                <div class="imgs">
+                                    <div class="btn-next"></div>
+                                </div>
                             </div>
-                            <div class="description__more">Подробнее</div>
-                            <div class="description__btn">Перейти на канал
-                                <div class="description__arrow"></div>
+                            <div class="swiper-slide desc-imgs">
+                                <div class="description-2">
+                                    <div class="description__title">Большие скидки на Чёрную Пятницу</div>
+                                    <div class="description__subtittle">
+                                        Подписывайтесь, смотрите уроки, получайте промо-коды и используйте их при
+                                        покупке
+                                        в
+                                        нашем
+                                        магазине
+                                    </div>
+                                    <div class="description__more">Подробнее</div>
+                                    <div class="description__btn">Перейти на канал
+                                        <div class="description__arrow"></div>
+                                    </div>
+                                </div>
+
+                                <div class="imgs">
+                                    <div class="btn-next"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="imgs">
-                            <div class="btn-next"></div>
                         </div>
                     </div>
+
                     <div class="swiper additional-slider">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="(item, i) in arrOffers" :key="item.img + i">
+                            <div class="swiper-slide additional-slide" v-for="(item, i) in arrOffers"
+                                :key="item.img + i">
                                 <img class="offer-img" :src="`assets/images/${item.img}.png`" alt="`${item.img}`"></img>
                                 <div class="offer-text" v-text="item.text"></div>
                             </div>
@@ -131,42 +158,48 @@
 
                 <div class="swiper product-of-day ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item, i) in arrProductsOfDay" :key="i">
-                            <div class="product-of-day__flex">
-                                <div class="product-of-day__sale">{{item.sale}}
-                                    <div class="product-of-day__sale abs-label">Товар дня</div>
-                                </div>
-                                <div class="product-of-day__star">
-                                    <img src="assets/images/star.svg" alt="оценка" width="20" height="20"
-                                        style="margin-right: 7px">
-                                    {{item.mark}}
-                                </div>
-                            </div>
-                            <img class="product-of-day__img" :src="`assets/images/${item.img}.png`"
-                                alt="`${item.img}`"></img>
-                            <div class="product-of-day__text">{{item.product}}</div>
-                            <div class="product-of-day__about">{{item.about}}</div>
-                            <div class="product-of-day__price">{{item.price}}</div>
-                            <div class="product-of-day__old-price">{{item.oldPrice}}</div>
-                            <div class="product-of-day__flex">
-                                <div class="product-of-day__luck">
-                                    <div class="product-of-day__luck-img">
+                        <div class="swiper-slide product" v-for="(item, i) in arrProductsOfDay" :key="i">
+                            <div class="product-img">
+                                <div class="product-of-day__flex">
+                                    <div class="product-of-day__sale abs-percent">{{item.sale}}
+                                        <div class="product-of-day__sale abs-label">Товар дня</div>
                                     </div>
-                                    Мне повезет
+                                    <div class="product-of-day__star">
+                                        <img src="assets/images/star.svg" alt="оценка" width="20" height="20"
+                                            style="margin-right: 7px">
+                                        {{item.mark}}
+                                    </div>
                                 </div>
-                                <div class="product-of-day__like"></div>
+                                <img class="product-of-day__img" :src="`assets/images/${item.img}.png`"
+                                    alt="`${item.img}`"></img>
                             </div>
-                            <div class="product-of-day__flex">
-                                <div class="product-of-day__add-btn">
-                                    <div class="basket__img"></div>
-                                    В корзину
+                            <div class="product-desc">
+                                <div class="product-of-day__text">{{item.product}}</div>
+                                <div class="product-of-day__about">{{item.about}}</div>
+                                <div class="product-of-day__price">{{item.price}}</div>
+                                <div class="product-of-day__old-price">{{item.oldPrice}}</div>
+                                <div class="product-of-day__flex">
+                                    <div class="product-of-day__luck">
+                                        <div class="product-of-day__luck-img">
+                                        </div>
+                                        Мне повезет
+                                    </div>
+                                    <div class="product-of-day__like"></div>
                                 </div>
-                                <div class="product-of-day__slider">{{i+1}} из {{arrProductsOfDay.length}}</div>
+                                <div class="product-of-day__flex">
+                                    <div class="product-of-day__add-btn">
+                                        <div class="basket__img"></div>
+                                        В корзину
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="product-of-day__slider">{{1}} из {{arrProductsOfDay.length}}</div>
                     <div class="product swiper-button-prev"></div>
                     <div class="product swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
@@ -174,26 +207,28 @@
 
     <footer>
         <div class="container">
-            <div class="footer">
-                <div class="footer-label">
-                    <div class="credit__img img-abs"></div>
-                    Кредит и рассрочка
-                </div>
-                <div class="footer-label">
-                    <div class="sale__img img-abs"></div>
-                    Система скидок
-                </div>
-                <div class="footer-label">
-                    <div class="tg__img img-abs"></div>
-                    Специальные E-MAIL рассылки
-                </div>
-                <div class="footer-label">
-                    <div class="gift__img img-abs"></div>
-                    Подарок к любому заказу
-                </div>
-                <div class="footer-label">
-                    <div class="plane__img img-abs"></div>
-                    Быстрая доставка
+            <div class="swiper footer">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide footer-label">
+                        <div class="credit__img img-abs"></div>
+                        Кредит и рассрочка
+                    </div>
+                    <div class="swiper-slide footer-label">
+                        <div class="sale__img img-abs"></div>
+                        Система скидок
+                    </div>
+                    <div class="swiper-slide footer-label">
+                        <div class="tg__img img-abs"></div>
+                        Специальные E-MAIL рассылки
+                    </div>
+                    <div class="swiper-slide footer-label">
+                        <div class="gift__img img-abs"></div>
+                        Подарок к любому заказу
+                    </div>
+                    <div class="swiper-slide footer-label">
+                        <div class="plane__img img-abs"></div>
+                        Быстрая доставка
+                    </div>
                 </div>
             </div>
         </div>
