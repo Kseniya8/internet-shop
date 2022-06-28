@@ -622,6 +622,7 @@ a {
     position: absolute;
     left: 275px;
     top: 86%;
+    z-index: 100;
     width: 60px;
     height: 25px;
     margin-top: 26px;

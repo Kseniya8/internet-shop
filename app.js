@@ -154,6 +154,7 @@ let app = new Vue({
             });
 
             const swiper = new Swiper('.product-of-day', {
+                grabCursor: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
@@ -169,7 +170,7 @@ let app = new Vue({
                         }
                     },
                     1350: {
-                        slidesPerView: 3,
+                        slidesPerView: 'auto',
                         spaceBetween: 23,
                         pagination: {
                             el: '.swiper-pagination',
@@ -178,6 +179,7 @@ let app = new Vue({
                         }
                     },
                     1551: {
+                        slidesPerView: 1,
                         spaceBetween: 45,
                         pagination: {
                             el: '.product-of-day__slider',
@@ -218,13 +220,13 @@ let app = new Vue({
                     1551: {
                         spaceBetween: 17,
                     },
-                }
-
+                },
+                loop: true,
+                slidesPerView: 'auto',
+                grabCursor: true,
             });
 
             const swiperFooter = new Swiper('.footer', {
-
-
                 grabCursor: true,
                 slidesPerView: 'auto',
                 speed: 2000,
