@@ -1,6 +1,7 @@
 let app = new Vue({
-    el: '.intro',
+    el: '#app',
     data: {
+        isShowGrid: false,
         arrOffers: [
             {
                 img: 'sale',
@@ -85,38 +86,63 @@ let app = new Vue({
         ]
     },
     methods: {
+        ShowGrid() {
+            if (this.isShowGrid)
+                document.querySelector('.grid').style.gridAutoRows = '0';
+            else
+                document.querySelector('.grid').style.gridAutoRows = 'unset';
+            this.isShowGrid = !this.isShowGrid;
+        },
+
         initSwipers() {
             const swiperMain = new Swiper('.main', {
-                spaceBetween: 26,
-                loop: true,
                 breakpoints: {
                     0: {
-                        slidesPerView: 1,
+                        initialSlide: 0,
+                        spaceBetween: 10,
+                        loop: false,
+                        slidesPerView: 'auto',
+                        pagination: {
+                            el: '.swiper-pagination-main',
+                            type: 'bullets',
+                            clickable: true,
+                        }
                     },
                     1025: {
+                        spaceBetween: 26,
+                        loop: true,
                         slidesPerView: 'auto',
                     },
                     1551: {
+                        spaceBetween: 26,
+                        loop: true,
                         slidesPerView: 1,
                     },
+                },
+                speed: 2500,
+                grabCursor: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
                 }
-                // freeMode: true,
-                // autoplay: {
-                //    delay: 2000,
-                //     disableOnInteraction: false,
-                // }
             });
 
             const swiperHint = new Swiper('.slider-hint', {
                 loop: true,
+                speed: 4000,
                 slidesPerView: 'auto',
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
+                freeMode: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
                 breakpoints: {
                     0: {
-                        spaceBetween: 15,
+                        spaceBetween: 11,
                     },
                     1025: {
                         spaceBetween: 38,
@@ -133,7 +159,7 @@ let app = new Vue({
                     prevEl: '.swiper-button-prev',
                 },
                 breakpoints: {
-                    0: {
+                    1024: {
                         slidesPerView: 2,
                         spaceBetween: 23,
                         pagination: {
@@ -164,6 +190,18 @@ let app = new Vue({
                 }
             });
 
+            const swiperMobile = new Swiper('.product-of-day__mobile', {
+                initialSlide: 0,
+                loop: false,
+                speed: 1500,
+                spaceBetween: 24,
+                slidesPerView: 'auto',
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }
+            });
+
             const swiperAdd = new Swiper('.additional-slider', {
                 navigation: {
                     nextEl: '.swiper-button-next',
@@ -171,7 +209,8 @@ let app = new Vue({
                 },
                 breakpoints: {
                     0: {
-                        spaceBetween: 15,
+                        spaceBetween: 20,
+                        slidesPerView: 'auto',
                     },
                     1025: {
                         spaceBetween: 24,
@@ -184,8 +223,11 @@ let app = new Vue({
             });
 
             const swiperFooter = new Swiper('.footer', {
-                loop: true,
+
+
+                grabCursor: true,
                 slidesPerView: 'auto',
+                speed: 2000,
                 breakpoints: {
                     0: {
                         spaceBetween: 40,
@@ -196,12 +238,12 @@ let app = new Vue({
                     1551: {
                         spaceBetween: 86,
                     },
+                },
+                freeMode: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
                 }
-                // freeMode: true,
-                // autoplay: {
-                //    delay: 2000,
-                //     disableOnInteraction: false,
-                // }
             });
         }
     },
@@ -215,3 +257,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
         app.initSwipers();
     };
 });
+
+let headerFix = document.querySelector('.header-fixed__inner__mobile');
+let bottomMenu = document.querySelector('.bottom-menu');
+let scrollPrev = 0;
+
+document.onscroll = function () {
+    let scroll = window.scrollY;
+
+    if (scroll > 127) {
+        headerFix.style.transform = 'translateY(127px)';
+    } else {
+        headerFix.style.transform = 'translateY(-127px)';
+    }
+
+    if (scroll > scrollPrev) {
+        bottomMenu.style.transform = 'translateY(-64px)';
+    } else {
+        bottomMenu.style.transform = 'translateY(64px)';
+    }
+    scrollPrev = scroll;
+}
